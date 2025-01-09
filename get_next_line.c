@@ -6,7 +6,7 @@
 /*   By: hademirc <hademirc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:23:36 by hademirc          #+#    #+#             */
-/*   Updated: 2025/01/04 15:48:51 by hademirc         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:49:10 by hademirc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ char	*get_swap(char *getline)
 		return (NULL);
 	while (getline[i] != '\0' && getline[i] != '\n')
 		i++;
-	returnline = malloc(sizeof(char) * (i + 2));
+	if (getline[i] == '\n')
+		i++;
+	returnline = malloc(sizeof(char) * (i + 1));
 	if (!returnline)
 		return (NULL);
 	i = 0;
@@ -75,10 +77,7 @@ char	*get_swap(char *getline)
 		i++;
 	}
 	if (getline[i] == '\n')
-	{
-		returnline[i] = '\n';
-		i++;
-	}
+		returnline[i++] = '\n';
 	returnline[i] = '\0';
 	return (returnline);
 }
